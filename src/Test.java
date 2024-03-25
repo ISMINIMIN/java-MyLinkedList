@@ -26,5 +26,10 @@ public class Test {
         while(iterator.hasNext()) {
             System.out.println(" - value : " + iterator.next());
         }
+
+//        IndexOutOfBoundsException
+//        list.get(10);
+//        list.delete(10);
+//        list.add(10, 500);
     }
 }
