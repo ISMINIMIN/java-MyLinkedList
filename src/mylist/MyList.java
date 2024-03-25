@@ -1,5 +1,7 @@
 package mylist;
 
+import java.util.Iterator;
+
 public interface MyList<E> {
     void add(E e);
 
@@ -12,4 +14,6 @@ public interface MyList<E> {
     int size();
 
     String toString();
+
+    Iterator<E> iterator();
 }

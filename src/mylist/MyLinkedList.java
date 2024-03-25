@@ -1,5 +1,8 @@
 package mylist;
 
+import java.util.Iterator;
+import java.util.ListIterator;
+
 public class MyLinkedList<E> implements MyList<E> {
     private int size;
     private Node first;
@@ -130,6 +133,11 @@ public class MyLinkedList<E> implements MyList<E> {
         return sb.toString();
     }
 
+    @Override
+    public Iterator<E> iterator() {
+        return new MyIterator();
+    }
+
     private class Node {
         private final E data;
         private Node next;
@@ -141,6 +149,29 @@ public class MyLinkedList<E> implements MyList<E> {
 
         public String toString() {
             return String.valueOf(this.data);
+        }
+    }
+
+    public class MyIterator implements Iterator<E> {
+        private Node lastReturned;
+        private Node next;
+        private int nextIndex;
+
+        MyIterator() {
+            next = first;
+            nextIndex = 0;
+        }
+
+        public E next() {
+            lastReturned = next;
+            next = next.next;
+            nextIndex++;
+
+            return lastReturned.data;
+        }
+
+        public boolean hasNext() {
+            return nextIndex < size;
         }
     }
 }
